@@ -26,9 +26,59 @@
 
     最近デスクトップはFluxboxで十分じゃないかと思い始めた。
 
+    ちなみにこれまではKDEを使っていた。
+
 *** shell
     .zshrc, .zprofile, およびX回りになるが.xprofile
 
     Bashも使うし私はどっちかというとPOSIX+原理+主義者なんだけど……
 
     zshは使い始めたばかり。
+
+** パッケージマネージャで入れるもの
+   これも書いておかないと毎回忘れる。
+
+*** yaourt
+    #+BEGIN_SRC text
+    /etc/pacman.conf
+    [archlinuxfr]
+    SigLevel = Never
+    Server = http://repo.archlinux.fr/$arch
+    #+END_SRC
+
+*** 端末エミュレータ
+    sakura tilda
+
+*** マルチメディア
+    geeqie smplayer mplayer mpv okular mupdf
+
+    (番外)wine + foobar2000
+
+*** browser
+    chromium firefox
+    
+    (AURから)vivaldi vivaldi-ffmpeg-codecs chromium-pepper-flash
+
+*** オフィス
+    libreoffice-still
+
+*** ファイルマネージャ
+    pcmanfm
+
+*** アーカイバ
+    (AURから)unarchiver unzip-iconv
+
+*** 日本語入力
+    fcitx-mozc
+
+    (AURから)fcitx-mozc-ut
+
+** TODO
+
+*** mikutterを自動で導入させたい
+
+*** たぶん忘れてることがある
+
+*** 今の設定を発展させる
+
+*** Emacsの使い方を思い出す
