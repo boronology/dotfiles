@@ -1,0 +1,31 @@
+[[plugins]]
+repo = 'Quramy/tsuquyomi'
+on_ft = ['typescript']
+
+[[plugins]]
+repo = 'davidhalter/jedi-vim'
+on_ft = ['python']
+
+[[plugins]]
+repo = 'jelera/vim-javascript-syntax'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = ['typescript']
+
+[[plugins]]
+repo = 'jason0x43/vim-js-indent'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'Omnisharp/omnisharp-vim'
+build = 'xbuild server/OmniSharp.sln'
+on_ft = ['cs','csi','csx']
+
+[[plugins]]
+repo = 'OrangeT/vim-csharp'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+
