@@ -31,7 +31,7 @@
 *** shell
     .zshrc, .zprofile, およびX回りになるが.xprofile
 
-    Bashも使うし私はどっちかというとPOSIX+原理+主義者なんだけど……
+    Bashも使うし私はどっちかというとPOSIX +原理+ 主義者なんだけど……
 
     zshは使い始めたばかり。
 
@@ -73,7 +73,7 @@
 
     (AURから)fcitx-mozc-ut
 
-** TODO
+** 今後の予定
 
 *** mikutterを自動で導入させたい
 
