@@ -1,0 +1,34 @@
+
+* dotfiles
+
+** 内容
+   バックアップを兼ねてgithubでも管理することにしたdotfiles
+
+*** Makefile
+    makeで各ファイルを書き戻せるようにした。
+
+    といっても該当場所にシンボリックリンクを張るだけ。
+
+    わりとやっつけ仕事。
+
+*** emacs
+    .emacs.d/init.el
+
+    パッケージはpackage.elで導入する。
+
+*** vim
+    .vim/{dein.toml,dein_lazy.toml}と.vimrc
+
+    [[ https://github.com/Shougo/dein.vim][Shougo/dein.vim]] のインストールを含む。
+
+*** fluxbox
+    .fluxbox/{startup,keys}
+
+    最近デスクトップはFluxboxで十分じゃないかと思い始めた。
+
+*** shell
+    .zshrc, .zprofile, およびX回りになるが.xprofile
+
+    Bashも使うし私はどっちかというとPOSIX+原理+主義者なんだけど……
+
+    zshは使い始めたばかり。
