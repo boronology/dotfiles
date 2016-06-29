@@ -38,12 +38,12 @@ key[Home]=${terminfo[khome]}
 key[End]=${terminfo[kend]}
 key[Insert]=${terminfo[kich1]}
 key[Delete]=${terminfo[kdch1]}
-key[PageUp]=${terminfo[kpp]}
-key[PageDown]=${terminfo[knp]}
+# key[PageUp]=${terminfo[kpp]}
+# key[PageDown]=${terminfo[knp]}
 
 [[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
 [[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
 [[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
 [[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
-[[ -n "${key[PageUp]}"  ]]  && bindkey  "${key[PageUp]}"    beginning-of-history
-[[ -n "${key[PageDown]}" ]] && bindkey  "${key[PageDown]}"  end-of-history
+# [[ -n "${key[PageUp]}"  ]]  && bindkey  "${key[PageUp]}"    beginning-of-history
+# [[ -n "${key[PageDown]}" ]] && bindkey  "${key[PageDown]}"  end-of-history
