@@ -83,3 +83,5 @@
 
 *** Emacsの使い方を思い出す
     Emacsのパッケージをどっかに書き出す必要がある。
+
+*** TODOをGithubのIssueに移す
