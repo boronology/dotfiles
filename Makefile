@@ -26,6 +26,6 @@ shell:
 	ln -s ${PWD}/.xprofile ${HOME}/.xprofile
 	ln -s ${PWD}/.zprofile ${HOME}/.zprofile
 
-.PHONY:
+.PHONY: all
 all: emacs vim fluxbox shell
 
