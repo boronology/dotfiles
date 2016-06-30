@@ -26,6 +26,12 @@ shell:
 	ln -s ${PWD}/.xprofile ${HOME}/.xprofile
 	ln -s ${PWD}/.zprofile ${HOME}/.zprofile
 
+.PHONY: mikutter_plugin
+mikutter_plugin:
+	mkdir -p ${HOME}/.mikutter/plugin
+	touch ${HOME}/.mikutter/plugin/aspectframe.rb
+	touch ${HOME}/.mikutter/plugin/display_requirements.rb
+
 .PHONY: all
 all: emacs vim fluxbox shell
 
