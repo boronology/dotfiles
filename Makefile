@@ -31,6 +31,10 @@ mikutter_plugin:
 	mkdir -p ${HOME}/.mikutter/plugin
 	touch ${HOME}/.mikutter/plugin/aspectframe.rb
 	touch ${HOME}/.mikutter/plugin/display_requirements.rb
+	curl https://gist.githubusercontent.com/boronology/be0019622a76b6757407b335495439d0/raw/d9018c6c10a3e5a4499784d31da95b72fd6d1b4a/force_delete.rb -o ${HOME}/.mikutter/plugin/force_delete.rb
+	mkdir -p ${HOME}/.mikutter/plugin/open_web_of_tweet
+	git clone git@github.com:boronology/open_web_of_tweet.git ${HOME}/.mikutter/open_web_of_tweet
+
 
 .PHONY: all
 all: emacs vim fluxbox shell
