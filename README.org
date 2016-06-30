@@ -72,16 +72,3 @@
     fcitx-mozc
 
     (AURから)fcitx-mozc-ut
-
-** 今後の予定
-
-*** mikutterを自動で導入させたい
-
-*** たぶん忘れてることがある
-
-*** 今の設定を発展させる
-
-*** Emacsの使い方を思い出す
-    Emacsのパッケージをどっかに書き出す必要がある。
-
-*** TODOをGithubのIssueに移す
