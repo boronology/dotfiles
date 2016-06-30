@@ -26,6 +26,11 @@ shell:
 	ln -s ${PWD}/.xprofile ${HOME}/.xprofile
 	ln -s ${PWD}/.zprofile ${HOME}/.zprofile
 
+.PHONY: mikutter_main
+mikutter_main:
+	mkdir -p ${HOME}/mikutter
+	git clone git://toshia.dip.jp/mikutter.git ${HOME}/mikutter
+
 .PHONY: all
 all: emacs vim fluxbox shell
 
