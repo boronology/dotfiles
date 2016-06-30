@@ -46,7 +46,7 @@ mikutter_plugin:
 	mkdir -p ${HOME}/.mikutter/plugin/mikutter_suddenly_death
 	git clone git@github.com:Akkiesoft/mikutter_suddenly_death.git ${HOME}/.mikutter/plugin/mikutter_suddenly_death
 
-.PHONY
+.PHONY mikutter
 mikutter: mikutter_main mikutter_plugin
 
 .PHONY: all
