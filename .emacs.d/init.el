@@ -145,14 +145,26 @@
 	     (setq indent-tabs-mode nil)
 	     (setq tab-width 4)))
 
-;;clojure mode
+;; clojure mode
+;; M-x cider-jack-in
+(require 'clojure-mode)
 (require 'cider)
-(require 'ac-nrepl)
+(setq nrepl-log-messages t
+      cider-repl-display-in-current-window t
+      cider-repl-use-clojure-font-lock t
+      cider-prompt-save-file-on-load t
+      cider-overlays-use-font-lock t)
 (add-hook 'clojure-mode-hook
 	  (lambda ()
 	    (cider-mode 1)
-	    (ac-nrepl-setup)))
-(add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
+	    (clj-refactor-mode)
+	    (eldoc-mode)
+	    ))
+(add-hook 'cider-repl-mode-hook
+	  (lambda ()
+	    (company-mode)
+	    (eldoc-mode)))
+(cider-repl-toggle-pretty-printing)
 
 ;;ファイル名の補完で大文字小文字を無視
 (setq read-file-name-completion-ignore-case t)
