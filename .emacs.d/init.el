@@ -42,7 +42,6 @@
 ;;load path
 (setq load-path (append
 		  (list
-		   (expand-file-name "~/.emacs.d/emacs-clang-complete-async")
 		   (expand-file-name "~/.emacs.d/mikutter-mode")
 		   (expand-file-name "~/.emacs.d/tern/emacs")
 		   )
@@ -62,21 +61,36 @@
 (setq org-startup-truncated nil)
 
 ;;auto-complete mode
-(require 'auto-complete)
-(require 'auto-complete-config)
-(setq ac-quick-help-delay 0.1)
-(setq ac-delay 0.1)
-(setq ac-auto-show-menu nil)
-(setq ac-auto-start nil)
-(ac-set-trigger-key "TAB")
-(add-hook 'auto-complete-mode-hook 'ac-common-setup)
-(setq-default ac-sources '(ac-source-abbrev
-			   ac-source-dictionary
-			   ac-source-words-in-same-mode-buffers))
-(add-to-list 'ac-sources 'ac-source-filename)
-(eval-after-load "auto-complete"
-  '(add-to-list 'ac-modes 'cider-repl-mode))
-(global-auto-complete-mode t)
+;;(require 'auto-complete)
+;;(require 'auto-complete-config)
+;;(setq ac-quick-help-delay 0.1)
+;;(setq ac-delay 0.1)
+;;(setq ac-auto-show-menu nil)
+;;(setq ac-auto-start nil)
+;;(ac-set-trigger-key "TAB")
+;;(add-hook 'auto-complete-mode-hook 'ac-common-setup)
+;;(setq-default ac-sources '(ac-source-abbrev
+;;			   ac-source-dictionary
+;;			   ac-source-words-in-same-mode-buffers))
+;;(add-to-list 'ac-sources 'ac-source-filename)
+;;(eval-after-load "auto-complete"
+;;  '(add-to-list 'ac-modes 'cider-repl-mode))
+;;(global-auto-complete-mode t)
+;;
+
+;;company-mode
+(require 'company)
+
+(setq company-idle-delay 0.1)
+(when (locate-library "company")
+  (global-company-mode 1)
+  (global-set-key (kbd "\t") 'company-complete)
+  ;; (setq company-idle-delay nil) ; 自動補完をしない
+  (define-key company-active-map (kbd "C-n") 'company-select-next)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous)
+  (define-key company-search-map (kbd "C-n") 'company-select-next)
+  (define-key company-search-map (kbd "C-p") 'company-select-previous)
+  )
 
 ;;paredit-mode
 ;;hilight and color paren
@@ -87,26 +101,24 @@
 (require 'hungry-delete)
 (add-hook 'emacs-lisp-mode-hook
 	  (lambda ()
-	    (add-to-list 'ac-sources 'ac-source-symbols)
+;;	    (add-to-list 'ac-sources 'ac-source-symbols)
 	    (hungry-delete-mode)
-	    (ac-emacs-lisp-mode-setup)))
+;;	    (ac-emacs-lisp-mode-setup)
+	    ))
 
 ;;C++ mode
-(require 'auto-complete-clang-async)
-(setq ac-clang-cflags '("-std=c++11"))
-(defun ac-cc-mode-setup ()
-  (setq ac-clang-complete-executable "~/.emacs.d/emacs-clang-complete-async/clang-complete")
-  (setq ac-sources '(ac-source-clang-async ac-source-dictionary))
-  (ac-clang-launch-completion-process))
-
+(eval-after-load "irony"
+  '(progn
+     (custom-set-variables '(irony-additional-clang-options '("-std=c++14")))
+     (add-to-list 'company-backends 'company-irony)
+     (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+     (add-hook 'c-mode-common-hook 'irony-mode)))
 (add-hook 'c-mode-common-hook
 	    (lambda ()
-	      (ac-cc-mode-setup)
+	      (company-mode)
 	      (c-set-style "stroustrup")
 	      (c-toggle-auto-hungry-state 1)
 	      (c-toggle-electric-state 1)))
-
-
 
 ;;対応する括弧をハイライト
 (show-paren-mode t)
@@ -143,7 +155,7 @@
 (require 'epc)
 (add-hook 'python-mode-hook
 	  '(lambda ()
-	     (ac-set-trigger-key nil)
+	     ;;(ac-set-trigger-key nil)
 	     (jedi:setup)
 	     (setq indent-level 4)
 	     (setq python-indent 4)
