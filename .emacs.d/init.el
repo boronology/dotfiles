@@ -45,7 +45,6 @@
 		   (expand-file-name "~/.emacs.d/emacs-clang-complete-async")
 		   (expand-file-name "~/.emacs.d/mikutter-mode")
 		   (expand-file-name "~/.emacs.d/tern/emacs")
-		   (expand-file-name "~/.emacs.d/emacs-2048")
 		   )
 		  load-path))
 
@@ -250,6 +249,3 @@
   '(custom-set-variables
     '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
 
-;;game - 2048
-;;install from https://github.com/sprang/emacs-2048
-(load-library "2048")
