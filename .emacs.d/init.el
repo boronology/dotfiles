@@ -60,27 +60,8 @@
 ;; enable truncate
 (setq org-startup-truncated nil)
 
-;;auto-complete mode
-;;(require 'auto-complete)
-;;(require 'auto-complete-config)
-;;(setq ac-quick-help-delay 0.1)
-;;(setq ac-delay 0.1)
-;;(setq ac-auto-show-menu nil)
-;;(setq ac-auto-start nil)
-;;(ac-set-trigger-key "TAB")
-;;(add-hook 'auto-complete-mode-hook 'ac-common-setup)
-;;(setq-default ac-sources '(ac-source-abbrev
-;;			   ac-source-dictionary
-;;			   ac-source-words-in-same-mode-buffers))
-;;(add-to-list 'ac-sources 'ac-source-filename)
-;;(eval-after-load "auto-complete"
-;;  '(add-to-list 'ac-modes 'cider-repl-mode))
-;;(global-auto-complete-mode t)
-;;
-
 ;;company-mode
 (require 'company)
-
 (setq company-idle-delay 0.1)
 (when (locate-library "company")
   (global-company-mode 1)
@@ -99,12 +80,7 @@
 
 ;;Emacs Lisp Mode
 (require 'hungry-delete)
-(add-hook 'emacs-lisp-mode-hook
-	  (lambda ()
-;;	    (add-to-list 'ac-sources 'ac-source-symbols)
-	    (hungry-delete-mode)
-;;	    (ac-emacs-lisp-mode-setup)
-	    ))
+(add-hook 'emacs-lisp-mode-hook 'hungry-delete-mode)
 
 ;;C++ mode
 (eval-after-load "irony"
@@ -112,14 +88,13 @@
      (custom-set-variables '(irony-additional-clang-options '("-std=c++14")))
      (add-to-list 'company-backends 'company-irony)
      (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-     (add-hook 'c-mode-common-hook 'irony-mode)))
-(add-hook 'c-mode-common-hook
-	    (lambda ()
-	      (company-mode)
-	      (c-set-style "stroustrup")
-	      (c-toggle-auto-hungry-state 1)
-	      (c-toggle-electric-state 1)))
-
+     (add-hook 'c-mode-common-hook (lambda()
+				     (irony-mode)
+				     (c-set-style "stroustrup")
+				     (c-toggle-auto-hungry-state 1)
+				     (c-toggle-electric-state 1)
+				     ))))
+  
 ;;対応する括弧をハイライト
 (show-paren-mode t)
 
@@ -150,21 +125,25 @@
 		      (font . "Ricty-14"))
 		    default-frame-alist))))
 
-;;python-mode 残念なことにPython2と思いきやjediはPython3対応
+;; Python3
+;; virtualenvでjediとepcをインストールして使う
+;; $ virtualenv -p python3 env
+;; $ pip install jedi epc
+;; $ source env/bin/activate
 (require 'python)
+(require 'jedi-core)
 (require 'epc)
 (add-hook 'python-mode-hook
 	  '(lambda ()
-	     ;;(ac-set-trigger-key nil)
+	     (setq jedi:complete-on-dot t)
+	     (setq jedi:use-shortcuts t)
 	     (jedi:setup)
+	     (add-to-list 'company-backends 'company-jedi)
 	     (setq indent-level 4)
 	     (setq python-indent 4)
 	     (setq python-indent-offset 4)
 	     (setq indent-tabs-mode nil)
 	     (setq tab-width 4)))
-;;jediでTABのキーバインドがauto-completeと衝突するのでPythonではC-tabで補完
-(define-key python-mode-map (kbd "<C-tab>") 'jedi:complete)
-(require 'jedi)
 
 ;;clojure mode
 (require 'cider)
