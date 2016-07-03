@@ -16,6 +16,9 @@ prompt walters
 # zstyle ':completion:*' menu select
 # setopt completealiases
 
+# ignore case in completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
 # keybind
 # array: key
 typeset -A key
