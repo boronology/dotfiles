@@ -43,7 +43,6 @@
 (setq load-path (append
 		  (list
 		   (expand-file-name "~/.emacs.d/mikutter-mode")
-		   (expand-file-name "~/.emacs.d/tern/emacs")
 		   )
 		  load-path))
 
@@ -206,18 +205,8 @@
 	      )))
 
 ;;JavaScript mode
-;;tern : http://ternjs.net/
-;;ternにはnode.jsが必要
-;;ternによる補完を使うには他所でternサーバーを建てたうえで
-;;tern-use-serverでポートを指定する
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(autoload 'tern-mode "tern.el" nil t)
-(add-hook 'js2-mode-hook 'tern-mode)
-(eval-after-load 'tern
-   '(progn
-      (require 'tern-auto-complete)
-      (tern-ac-setup)))
 
 ;;Undo-Tree mode
 ;;C-x uでUndo-Treeが開く
