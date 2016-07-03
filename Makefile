@@ -24,7 +24,7 @@ fluxbox:
 shell:
 	ln -s ${PWD}/.zshrc ${HOME}/.zshrc
 	ln -s ${PWD}/.xprofile ${HOME}/.xprofile
-	ln -s ${PWD}/.zprofile ${HOME}/.zprofile
+	ln -s ${PWD}/.zshenv ${HOME}/.zshenv
 
 .PHONY: mikutter_main
 mikutter_main:
