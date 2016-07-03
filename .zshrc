@@ -1,15 +1,8 @@
 # Created by newuser for 5.2
 
-# ---------- FROM BASH.RC ----------
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
 alias ls='ls --color=auto'
 alias ipython='ipython --pylab'
-
-# Added by Canopy installer on 2015-12-07
-# VIRTUAL_ENV_DISABLE_PROMPT can be set to '' to make bashprompt show that Canopy is active, otherwise 1
-VIRTUAL_ENV_DISABLE_PROMPT=1 source '/home/boronji/Enthought/Canopy_64bit/User/bin/activate'
+alias history="history -E 1"
 
 # ---------- ZSH SETTINGS ----------
 # basic settings
@@ -22,9 +15,6 @@ prompt walters
 
 # zstyle ':completion:*' menu select
 # setopt completealiases
-
-# history
-alias history="history -E 1"
 
 # keybind
 # array: key
