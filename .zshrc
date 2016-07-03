@@ -5,9 +5,7 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-export PATH=$PATH:/home/boronji/.gem/ruby/2.3.0/bin
 alias ipython='ipython --pylab'
-export GOPATH=/home/boronji/.gopath/bin
 
 # Added by Canopy installer on 2015-12-07
 # VIRTUAL_ENV_DISABLE_PROMPT can be set to '' to make bashprompt show that Canopy is active, otherwise 1
@@ -26,9 +24,6 @@ prompt walters
 # setopt completealiases
 
 # history
-export HISTFILE=~/.zsh_history
-export HISTSIZE=100000
-export SAVEHIST=1000000
 alias history="history -E 1"
 
 # keybind
