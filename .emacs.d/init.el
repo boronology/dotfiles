@@ -42,10 +42,7 @@
 ;;load path
 (setq load-path (append
 		  (list
-		   (expand-file-name "~/.emacs.d/emacs-clang-complete-async")
 		   (expand-file-name "~/.emacs.d/mikutter-mode")
-		   (expand-file-name "~/.emacs.d/tern/emacs")
-		   (expand-file-name "~/.emacs.d/emacs-2048")
 		   )
 		  load-path))
 
@@ -62,22 +59,18 @@
 ;; enable truncate
 (setq org-startup-truncated nil)
 
-;;auto-complete mode
-(require 'auto-complete)
-(require 'auto-complete-config)
-(setq ac-quick-help-delay 0.1)
-(setq ac-delay 0.1)
-(setq ac-auto-show-menu nil)
-(setq ac-auto-start nil)
-(ac-set-trigger-key "TAB")
-(add-hook 'auto-complete-mode-hook 'ac-common-setup)
-(setq-default ac-sources '(ac-source-abbrev
-			   ac-source-dictionary
-			   ac-source-words-in-same-mode-buffers))
-(add-to-list 'ac-sources 'ac-source-filename)
-(eval-after-load "auto-complete"
-  '(add-to-list 'ac-modes 'cider-repl-mode))
-(global-auto-complete-mode t)
+;;company-mode
+(require 'company)
+(setq company-idle-delay 0.1)
+(when (locate-library "company")
+  (global-company-mode 1)
+  (global-set-key (kbd "\t") 'company-complete)
+  ;; (setq company-idle-delay nil) ; 自動補完をしない
+  (define-key company-active-map (kbd "C-n") 'company-select-next)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous)
+  (define-key company-search-map (kbd "C-n") 'company-select-next)
+  (define-key company-search-map (kbd "C-p") 'company-select-previous)
+  )
 
 ;;paredit-mode
 ;;hilight and color paren
@@ -86,29 +79,21 @@
 
 ;;Emacs Lisp Mode
 (require 'hungry-delete)
-(add-hook 'emacs-lisp-mode-hook
-	  (lambda ()
-	    (add-to-list 'ac-sources 'ac-source-symbols)
-	    (hungry-delete-mode)
-	    (ac-emacs-lisp-mode-setup)))
+(add-hook 'emacs-lisp-mode-hook 'hungry-delete-mode)
 
 ;;C++ mode
-(require 'auto-complete-clang-async)
-(setq ac-clang-cflags '("-std=c++11"))
-(defun ac-cc-mode-setup ()
-  (setq ac-clang-complete-executable "~/.emacs.d/emacs-clang-complete-async/clang-complete")
-  (setq ac-sources '(ac-source-clang-async ac-source-dictionary))
-  (ac-clang-launch-completion-process))
-
-(add-hook 'c-mode-common-hook
-	    (lambda ()
-	      (ac-cc-mode-setup)
-	      (c-set-style "stroustrup")
-	      (c-toggle-auto-hungry-state 1)
-	      (c-toggle-electric-state 1)))
-
-
-
+(eval-after-load "irony"
+  '(progn
+     (custom-set-variables '(irony-additional-clang-options '("-std=c++14")))
+     (add-to-list 'company-backends 'company-irony)
+     (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+     (add-hook 'c-mode-common-hook (lambda()
+				     (irony-mode)
+				     (c-set-style "stroustrup")
+				     (c-toggle-auto-hungry-state 1)
+				     (c-toggle-electric-state 1)
+				     ))))
+  
 ;;対応する括弧をハイライト
 (show-paren-mode t)
 
@@ -139,30 +124,46 @@
 		      (font . "Ricty-14"))
 		    default-frame-alist))))
 
-;;python-mode 残念なことにPython2と思いきやjediはPython3対応
+;; Python3
+;; virtualenvでjediとepcをインストールして使う
+;; $ virtualenv -p python3 env
+;; $ pip install jedi epc
+;; $ source env/bin/activate
 (require 'python)
+(require 'jedi-core)
 (require 'epc)
 (add-hook 'python-mode-hook
 	  '(lambda ()
-	     (ac-set-trigger-key nil)
+	     (setq jedi:complete-on-dot t)
+	     (setq jedi:use-shortcuts t)
 	     (jedi:setup)
+	     (add-to-list 'company-backends 'company-jedi)
 	     (setq indent-level 4)
 	     (setq python-indent 4)
 	     (setq python-indent-offset 4)
 	     (setq indent-tabs-mode nil)
 	     (setq tab-width 4)))
-;;jediでTABのキーバインドがauto-completeと衝突するのでPythonではC-tabで補完
-(define-key python-mode-map (kbd "<C-tab>") 'jedi:complete)
-(require 'jedi)
 
-;;clojure mode
+;; clojure mode
+;; M-x cider-jack-in
+(require 'clojure-mode)
 (require 'cider)
-(require 'ac-nrepl)
+(setq nrepl-log-messages t
+      cider-repl-display-in-current-window t
+      cider-repl-use-clojure-font-lock t
+      cider-prompt-save-file-on-load t
+      cider-overlays-use-font-lock t)
 (add-hook 'clojure-mode-hook
 	  (lambda ()
 	    (cider-mode 1)
-	    (ac-nrepl-setup)))
-(add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
+	    (clj-refactor-mode)
+	    (eldoc-mode)
+	    ))
+(add-hook 'cider-repl-mode-hook
+	  (lambda ()
+	    (company-mode)
+	    (eldoc-mode)))
+(cider-repl-toggle-pretty-printing)
 
 ;;ファイル名の補完で大文字小文字を無視
 (setq read-file-name-completion-ignore-case t)
@@ -204,18 +205,8 @@
 	      )))
 
 ;;JavaScript mode
-;;tern : http://ternjs.net/
-;;ternにはnode.jsが必要
-;;ternによる補完を使うには他所でternサーバーを建てたうえで
-;;tern-use-serverでポートを指定する
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(autoload 'tern-mode "tern.el" nil t)
-(add-hook 'js2-mode-hook 'tern-mode)
-(eval-after-load 'tern
-   '(progn
-      (require 'tern-auto-complete)
-      (tern-ac-setup)))
 
 ;;Undo-Tree mode
 ;;C-x uでUndo-Treeが開く
@@ -250,6 +241,3 @@
   '(custom-set-variables
     '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
 
-;;game - 2048
-;;install from https://github.com/sprang/emacs-2048
-(load-library "2048")
