@@ -35,3 +35,5 @@ key[Delete]=${terminfo[kdch1]}
 [[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
 # [[ -n "${key[PageUp]}"  ]]  && bindkey  "${key[PageUp]}"    beginning-of-history
 # [[ -n "${key[PageDown]}" ]] && bindkey  "${key[PageDown]}"  end-of-history
+
+bindkey "^R" history-incremental-search-backward
