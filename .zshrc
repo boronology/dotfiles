@@ -40,4 +40,4 @@ key[Delete]=${terminfo[kdch1]}
 # [[ -n "${key[PageDown]}" ]] && bindkey  "${key[PageDown]}"  end-of-history
 
 bindkey "^R" history-incremental-search-backward
-
+bindkey "^S" history-incremental-search-forward
