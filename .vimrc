@@ -1,3 +1,6 @@
+" do not show solash screen
+set shortmess+=I
+
 "hilight paren
 set showmatch
 set matchtime=3
