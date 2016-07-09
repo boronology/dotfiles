@@ -70,6 +70,16 @@ filetype plugin indent on
 " ########## lightline ##########
 set laststatus=2
 
+" ########## color scheme ##########
+set background=dark
+if has('gui_running')
+
+    colorscheme solarized
+else
+    let g:solarized_termcolors=256
+    colorscheme solarized
+endif
+
 " ########## neocomplete ##########
 " 'Shougo/neocomplete.vim' {{{
 let g:neocomplete#enable_at_startup = 1
