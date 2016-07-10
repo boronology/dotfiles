@@ -54,6 +54,10 @@
 
     (番外)wine + foobar2000
 
+    音量調整にpavucontrol
+
+    (AURから)pasystray-git
+
 *** browser
     chromium firefox
     
@@ -75,3 +79,7 @@
 
 *** スクリーンセーバー
     sflock-git
+
+*** ssh key
+    ecdsa 521 or ed25519
+
