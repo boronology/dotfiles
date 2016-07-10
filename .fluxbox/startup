@@ -16,7 +16,7 @@ setxkbmap -layout jp -option ctrl:nocaps
 # idesk &
 if type wicd-gtk >/dev/null 2>&1
 then
-    wicd-gtk -t
+    wicd-gtk -t &
 fi
 pasystray &
 tilda &
