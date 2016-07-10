@@ -63,7 +63,7 @@
     libreoffice-still
 
 *** ファイルマネージャ
-    pcmanfm
+    pcmanfm-gtk3
 
 *** アーカイバ
     (AURから)unarchiver unzip-iconv
