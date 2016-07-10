@@ -14,6 +14,7 @@ setxkbmap -layout jp -option ctrl:nocaps
 # wmnd &
 # wmsmixer -w &
 # idesk &
+pasystray &
 tilda &
 fcitx &
 
