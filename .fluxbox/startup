@@ -14,6 +14,10 @@ setxkbmap -layout jp -option ctrl:nocaps
 # wmnd &
 # wmsmixer -w &
 # idesk &
+if type wicd-gtk >/dev/null 2>&1
+then
+    wicd-gtk -t
+fi
 pasystray &
 tilda &
 fcitx &
