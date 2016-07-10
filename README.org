@@ -72,3 +72,6 @@
     fcitx-mozc
 
     (AURから)fcitx-mozc-ut
+
+*** スクリーンセーバー
+    sflock-git
