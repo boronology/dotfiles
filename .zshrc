@@ -23,6 +23,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 setopt no_flow_control
 
 # keybind
+bindkey -e
 # array: key
 typeset -A key
 key[Home]=${terminfo[khome]}
