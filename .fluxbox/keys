@@ -142,3 +142,7 @@ Control Mod1 L :Exec sflock
 # brightness control
 XF86MonBrightnessDown : Exec xbacklight -dec 5
 XF86MonBrightnessUp : Exec xbacklight -inc 5
+
+# volume control
+XF86AudioRaiseVolume : Exec pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%
+XF86AudioLowerVolume : Exec pactl set-sink-mute 0 false ; pactl -- set-sink-volume 0 -5%
