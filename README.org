@@ -83,3 +83,5 @@
 *** ssh key
     ecdsa 521 or ed25519
 
+*** その他ユーティリティ
+    wicd-gtk cbatticon
