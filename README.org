@@ -16,6 +16,8 @@
 
     パッケージはpackage.elで導入する。
 
+    起動時にパッケージをチェックして自動でインストールするようにした。
+
 *** vim
     .vim/{dein.toml,dein_lazy.toml}と.vimrc
 
