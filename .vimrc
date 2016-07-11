@@ -1,3 +1,6 @@
+" do not show solash screen
+set shortmess+=I
+
 "hilight paren
 set showmatch
 set matchtime=3
@@ -66,6 +69,16 @@ filetype plugin indent on
 
 " ########## lightline ##########
 set laststatus=2
+
+" ########## color scheme ##########
+set background=dark
+if has('gui_running')
+
+    colorscheme solarized
+else
+    let g:solarized_termcolors=256
+    colorscheme solarized
+endif
 
 " ########## neocomplete ##########
 " 'Shougo/neocomplete.vim' {{{

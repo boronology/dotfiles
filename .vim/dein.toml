@@ -45,3 +45,5 @@ repo = 'cohama/lexima.vim'
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
 
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'

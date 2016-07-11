@@ -19,7 +19,11 @@ prompt walters
 # ignore case in completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
+# disable C-s/C-q
+setopt no_flow_control
+
 # keybind
+bindkey -e
 # array: key
 typeset -A key
 key[Home]=${terminfo[khome]}
@@ -35,3 +39,6 @@ key[Delete]=${terminfo[kdch1]}
 [[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
 # [[ -n "${key[PageUp]}"  ]]  && bindkey  "${key[PageUp]}"    beginning-of-history
 # [[ -n "${key[PageDown]}" ]] && bindkey  "${key[PageDown]}"  end-of-history
+
+bindkey "^R" history-incremental-search-backward
+bindkey "^S" history-incremental-search-forward

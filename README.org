@@ -16,6 +16,8 @@
 
     パッケージはpackage.elで導入する。
 
+    起動時にパッケージをチェックして自動でインストールするようにした。
+
 *** vim
     .vim/{dein.toml,dein_lazy.toml}と.vimrc
 
@@ -54,6 +56,10 @@
 
     (番外)wine + foobar2000
 
+    音量調整にpavucontrol
+
+    (AURから)pasystray-git
+
 *** browser
     chromium firefox
     
@@ -63,7 +69,7 @@
     libreoffice-still
 
 *** ファイルマネージャ
-    pcmanfm
+    pcmanfm-gtk3
 
 *** アーカイバ
     (AURから)unarchiver unzip-iconv
@@ -72,3 +78,12 @@
     fcitx-mozc
 
     (AURから)fcitx-mozc-ut
+
+*** スクリーンセーバー
+    sflock-git
+
+*** ssh key
+    ecdsa 521 or ed25519
+
+*** その他ユーティリティ
+    wicd-gtk cbatticon
