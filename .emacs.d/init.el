@@ -116,7 +116,6 @@
 ;;load path
 (setq load-path (append
 		 (list
-		   (expand-file-name "~/.emacs.d/mikutter-mode")
 		   )
 		  load-path))
 
@@ -261,7 +260,6 @@
 
 ;;Ruby mode
 ;;C-c C-sでRun-ruby
-(require 'mikutter)
 (require 'ruby-mode)
 (require 'ruby-block)
 (require 'ruby-electric)
