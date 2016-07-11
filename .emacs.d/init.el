@@ -99,6 +99,16 @@
     yasnippet
     zenburn-theme))
 
+;; auto-install
+(require 'cl)
+(let ((not-installed (loop for x in my/packages
+			   when (not (package-installed-p x))
+			   collect x)))
+  (when not-installed
+    (package-refresh-contents)
+    (dolist (pkg not-installed)
+      (package-install pkg))))
+
 ;;color-theme-zenburn
 ;;it does not need old "color-theme"
 (load-theme 'zenburn t)
@@ -305,11 +315,3 @@
   '(custom-set-variables
     '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
 
-;; auto-install
-(let ((not-installed (loop for x in my/packages
-			   when (not (package-installed-p x))
-			   collect x)))
-  (when not-installed
-    (package-refresh-contents)
-    (dolist (pkg not-installed)
-      (package-install pkg))))
