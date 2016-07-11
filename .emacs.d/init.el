@@ -35,13 +35,77 @@
 (setq package-user-dir "~/.emacs.d/packages")
 (package-initialize)
 
+;; package list
+(defvar my/packages
+  '(cider
+    clj-refactor
+    clojure-mode
+    color-theme
+    company
+    company-jedi
+    company-tern
+    concurrent
+    ctable
+    dash
+    dash-functional
+    deferred
+    edn
+    epc
+    epl
+    esup
+    f
+    flycheck
+    flycheck-pos-tip
+    htmlize
+    hungry-delete
+    hydra
+    inf-ruby
+    inflections
+    irony
+    jedi-core
+    js2-mode
+    let-alist
+    macrostep
+    markdown-mode
+    mozc
+    multi-term
+    multiple-cursors
+    oauth
+    open-junk-file
+    paredit
+    peg
+    pkg-info
+    popup
+    pos-tip
+    python-environment
+    queue
+    rainbow-delimiters
+    robe
+    ruby-block
+    ruby-electric
+    s
+    seq
+    simple-httpd
+    skewer-mode
+    slime
+    slime-js
+    slime-repl
+    spinner
+    tabbar
+    tern
+    tumblesocks
+    twittering-mode
+    undo-tree
+    yasnippet
+    zenburn-theme))
+
 ;;color-theme-zenburn
 ;;it does not need old "color-theme"
 (load-theme 'zenburn t)
 
 ;;load path
 (setq load-path (append
-		  (list
+		 (list
 		   (expand-file-name "~/.emacs.d/mikutter-mode")
 		   )
 		  load-path))
@@ -241,3 +305,11 @@
   '(custom-set-variables
     '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
 
+;; auto-install
+(let ((not-installed (loop for x in my/packages
+			   when (not (package-installed-p x))
+			   collect x)))
+  (when not-installed
+    (package-refresh-contents)
+    (dolist (pkg not-installed)
+      (package-install pkg))))
