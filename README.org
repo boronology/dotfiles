@@ -82,8 +82,12 @@
 *** スクリーンセーバー
     sflock-git
 
-*** ssh key
-    ecdsa 521 or ed25519
-
 *** その他ユーティリティ
     wicd-gtk cbatticon
+
+*** フォント
+
+** その他設定類
+
+*** ssh key
+    ecdsa 521 or ed25519
