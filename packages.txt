@@ -73,7 +73,6 @@ net-tools
 nfs-utils
 ninja
 ntp
-nvidia-hook
 opencv
 otf-ipafont
 otf-source-han-code-jp
@@ -106,14 +105,11 @@ ttf-fira-sans
 ttf-freebanglafont
 ttf-inconsolata
 ttf-indic-otf
-ttf-ipa-mona
 ttf-khmer
 ttf-migu
-ttf-myanmar3
 ttf-myricam
 ttf-ohruri
 ttf-oradano-mincho
-ttf-persian-irfonts
 ttf-qurancomplex-fonts
 ttf-ricty
 ttf-rounded-mplus
