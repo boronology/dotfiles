@@ -84,7 +84,6 @@ racket
 rox
 sakura
 sddm
-sflock-git
 skype
 smplayer
 sqliteman

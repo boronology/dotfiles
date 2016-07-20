@@ -137,7 +137,7 @@ Control Mod4 F11 :TakeToWorkspace 11
 Control Mod4 F12 :TakeToWorkspace 12
 
 # screen lock
-Control Mod1 L :Exec sflock
+Control Mod1 L :Exec cinnamon-screensaver-command -l
 
 # brightness control
 XF86MonBrightnessDown : Exec xbacklight -dec 5
