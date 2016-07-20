@@ -80,7 +80,7 @@
     (AURから)fcitx-mozc-ut
 
 *** スクリーンセーバー
-    sflock-git
+    cinnamon-screensaver
 
 *** その他ユーティリティ
     wicd-gtk cbatticon
