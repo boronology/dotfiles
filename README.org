@@ -58,7 +58,7 @@
 
     音量調整にpavucontrol
 
-    (AURから)pasystray-git
+    (AURから)pasystray
 
 *** browser
     chromium firefox
@@ -86,6 +86,11 @@
     wicd-gtk cbatticon
 
 *** フォント
+    fonts.txt参照
+
+*** デスクトップ環境
+    もしものために一応。
+    cinnamon
 
 ** その他設定類
 
