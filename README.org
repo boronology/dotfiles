@@ -35,10 +35,7 @@
 
     Bashも使うし私はどっちかというとPOSIX +原理+ 主義者なんだけど……
 
-    zshは使い始めたばかり。
-
 ** パッケージマネージャで入れるもの
-   これも書いておかないと毎回忘れる。
 
 *** yaourt
     #+BEGIN_SRC text
@@ -48,44 +45,15 @@
     Server = http://repo.archlinux.fr/$arch
     #+END_SRC
 
-*** 端末エミュレータ
-    sakura tilda
+*** パッケージ
+    package.txt参照
 
-*** マルチメディア
-    geeqie smplayer mplayer mpv okular mupdf
-
-    (番外)wine + foobar2000
-
-    音量調整にpavucontrol
-
-    (AURから)pasystray-git
-
-*** browser
-    chromium firefox
-    
-    (AURから)vivaldi vivaldi-ffmpeg-codecs chromium-pepper-flash
-
-*** オフィス
-    libreoffice-still
-
-*** ファイルマネージャ
-    pcmanfm-gtk3
-
-*** アーカイバ
-    (AURから)unarchiver unzip-iconv
-
-*** 日本語入力
-    fcitx-mozc
-
-    (AURから)fcitx-mozc-ut
-
-*** スクリーンセーバー
-    sflock-git
-
-*** その他ユーティリティ
-    wicd-gtk cbatticon
+    #+BEGIN_SRC text
+    $ cat package.txt | xargs yaourt -S
+    #+END_SRC
 
 *** フォント
+    fonts.txt参照
 
 ** その他設定類
 
