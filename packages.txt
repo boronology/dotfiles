@@ -68,7 +68,7 @@ nfs-utils
 ninja
 ntp
 opencv
-pasystray
+pasystray-gtk2
 pcmanfm-gtk3
 pcsxr
 pitivi
