@@ -20,6 +20,10 @@ fi
 if type cbatticon >/dev/null 2>&1; then
     cbatticon &
 fi
+if type skypeforlinux > /dev/null 2>&1; then
+    skypeforlinux &
+fi
+
 pcmanfm -d &
 pasystray &
 tilda &
