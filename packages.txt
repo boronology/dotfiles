@@ -3,6 +3,7 @@ xorg-apps
 base
 base-devel
 fcitx-im
+skypeforlinux-bin
 alsa-firmware
 alsa-tools
 alsa-utils
@@ -84,7 +85,6 @@ racket
 rox
 sakura
 sddm
-skype
 smplayer
 sqliteman
 strace
