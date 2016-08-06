@@ -106,3 +106,4 @@ xorg-xinit
 xsensors
 yaourt
 zsh-completions
+gnome-screenshot
