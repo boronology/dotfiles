@@ -47,3 +47,9 @@ repo = 'nathanaelkane/vim-indent-guides'
 
 [[plugins]]
 repo = 'altercation/vim-colors-solarized'
+
+[[plugins]]
+repo = 'aharisu/vim_goshrepl'
+
+[[plugins]]
+repo = 'aharisu/vim-gdev'
