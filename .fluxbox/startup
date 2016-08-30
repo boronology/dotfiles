@@ -14,6 +14,7 @@ setxkbmap -layout jp -option ctrl:nocaps
 # wmnd &
 # wmsmixer -w &
 # idesk &
+# for Note PC
 if type wicd-gtk >/dev/null 2>&1; then
     wicd-gtk -t &
 fi
@@ -23,6 +24,9 @@ fi
 if type skypeforlinux > /dev/null 2>&1; then
     skypeforlinux &
 fi
+
+# for desktop
+xrandr --output HDMI1 --mode 2560x1440@55
 
 pcmanfm -d &
 pasystray &
