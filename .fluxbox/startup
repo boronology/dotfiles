@@ -26,7 +26,9 @@ if type skypeforlinux > /dev/null 2>&1; then
 fi
 
 # for desktop
-xrandr --output HDMI1 --mode 2560x1440@55
+if xrandr | grep 2560x1440@55 > /dev/null; then
+    xrandr --output HDMI1 --mode 2560x1440@55
+fi
 
 pcmanfm -d &
 pasystray &
