@@ -148,5 +148,5 @@ XF86AudioRaiseVolume : Exec pactl set-sink-mute 0 false ; pactl set-sink-volume 
 XF86AudioLowerVolume : Exec pactl set-sink-mute 0 false ; pactl -- set-sink-volume 0 -5%
 
 #screenshot
-Print :Exec gnome-screenshot
-Shift Print :Exec gnome-screenshot -w
+Print :Exec gnome-screenshot -w
+Control Print :Exec gnome-screenshot -w
