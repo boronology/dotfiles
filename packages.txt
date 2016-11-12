@@ -17,7 +17,6 @@ cdrdao
 checkbashisms
 chromium
 chromium-pepper-flash
-cinnamon
 clang
 clojure
 convmv
@@ -107,3 +106,4 @@ xsensors
 yaourt
 zsh-completions
 gnome-screenshot
+gnome-screensaver
