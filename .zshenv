@@ -1,5 +1,5 @@
 export LANG=ja_JP.UTF-8
-export PATH=$PATH:${HOME}/.gem/ruby/2.3.0/bin
+export PATH=$PATH:${HOME}/.gem/ruby/2.4.0/bin
 export GOPATH=${HOME}/.gopath/bin
 
 export HISTFILE=~/.zsh_history
