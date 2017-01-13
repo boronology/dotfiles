@@ -26,7 +26,7 @@ OnWindow Mod1 Mouse2 :Lower
 OnTitlebar Control Mouse1 :StartTabbing
 
 # double click on the titlebar to shade
-OnTitlebar Double Mouse1 :Shade
+OnTitlebar Double Mouse1 :Maximize
 
 # left click on the titlebar to move the window
 OnTitlebar Mouse1 :MacroCmd {Raise} {Focus} {ActivateTab}
@@ -137,7 +137,7 @@ Control Mod4 F11 :TakeToWorkspace 11
 Control Mod4 F12 :TakeToWorkspace 12
 
 # screen lock
-Control Mod1 L :Exec sflock
+Control Mod1 L :Exec gnome-screensaver-command -l
 
 # brightness control
 XF86MonBrightnessDown : Exec xbacklight -dec 5
@@ -146,3 +146,7 @@ XF86MonBrightnessUp : Exec xbacklight -inc 5
 # volume control
 XF86AudioRaiseVolume : Exec pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%
 XF86AudioLowerVolume : Exec pactl set-sink-mute 0 false ; pactl -- set-sink-volume 0 -5%
+
+#screenshot
+Print :Exec gnome-screenshot -w
+Control Print :Exec gnome-screenshot -w
