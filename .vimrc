@@ -30,6 +30,15 @@ set backspace=indent,eol,start
 "enable syntax hilite
 syntax on
 
+"split window
+" :split 
+" :vsplit
+"move window
+" C-w + hjkl
+" C-w + w
+" close window
+" :q
+
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible
