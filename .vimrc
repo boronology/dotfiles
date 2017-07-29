@@ -103,7 +103,13 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
+let g:neocomplete#auto_complete_delay = 150
+
 """}}}
+
+" ########## Quickrun ##########
+let g:quickrun_config = {}
 
 " ########## C++ ##########
 " 'justmao945/vim-clang'
@@ -122,6 +128,13 @@ let g:clang_format_exec = 'clang-format'
 " vim-clang : C++ completion
 let g:clang_c_options = '-std=c11'
 let g:clang_cpp_options = '-std=c++14 --pedantic-errors'
+
+" Syntastic for C++
+let g:syntastic_cpp_compiler = "clang++"
+let g:syntastic_cpp_compiler_options = "--std=c++14 --stdlib=libstdc++"
+
+" Quickrun for C++
+let g:quickrun_config['cpp'] = {'cmdopt': '--std=c++14 --stdlib=libstdc++'}
 
 " ########## JavaScript ##########
 let g:tern_map_keys = 0
@@ -151,6 +164,8 @@ let g:neocomplete#force_omni_input_patterns.python = '\h\w*\|[^. \t]\.\w*'
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
+let g:go_bin_path = $GOPATH
+exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
 endif

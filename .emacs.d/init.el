@@ -97,6 +97,7 @@
     twittering-mode
     undo-tree
     yasnippet
+    company-go
     zenburn-theme))
 
 ;; auto-install
@@ -118,6 +119,12 @@
 		 (list
 		   )
 		  load-path))
+
+;; シェルから環境変数を引き継ぐ
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+;;(exec-path-from-shell-copy-envs '("PATH" "GOPATH" "GOROOT"))
+
 
 ;;日本語入力メソッド
 ;;X上では別になくても困らないけど-nwではあると便利
@@ -305,6 +312,16 @@
 (setq oauth-nonce-function 'oauth-internal-make-nonce)
 (setq tumblesocks-blog "boronology.tumblr.com")
 
+;;Golang mode
+(require 'go-mode)
+(require 'company-go)
+(add-hook 'go-mode-hook (lambda ()
+			  (set (make-local-variable 'company-backends) '(company-go))
+			  (company-mode)
+			  (local-set-key (kbd "M-.") 'godef-jump)
+			  (setq indent-tabs-mode nil)
+			  ))
+
 ;;flycheck-mode
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -319,9 +336,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
+ '(irony-additional-clang-options (quote ("-std=c++14")))
  '(package-selected-packages
    (quote
-    (zenburn-theme undo-tree twittering-mode tumblesocks tabbar slime-js skewer-mode ruby-electric ruby-block robe rainbow-delimiters popup open-junk-file multi-term mozc irony hungry-delete flycheck-pos-tip f esup company-tern company-jedi color-theme clj-refactor))))
+    (exec-path-from-shell quickrun company-go zenburn-theme undo-tree twittering-mode tumblesocks tabbar slime-js skewer-mode ruby-electric ruby-block robe rainbow-delimiters popup open-junk-file multi-term mozc irony hungry-delete flycheck-pos-tip f esup company-tern company-jedi color-theme clj-refactor))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
