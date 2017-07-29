@@ -30,6 +30,13 @@
 
     ちなみにこれまではKDEを使っていた。
 
+*** Lumina Desktop
+    .fluxbox/lumina-startup.sh
+    
+    2017年からLuminaを使いはじめた。
+
+    起動時に走らせたいスクリプトを登録している。
+
 *** shell
     .zshrc, .zprofile, およびX回りになるが.xprofile
 
