@@ -49,6 +49,13 @@ mikutter_plugin:
 .PHONY: mikutter
 mikutter: mikutter_main mikutter_plugin
 
+.PHONY: lumina
+lumina:
+	mkdir -p ${HOME}/.fluxbox
+	ln -sf ${PWD}/.fluxbox/lumina_startup.sh ${HOME}/.fluxbox/lumina_startup.sh
+	chmod +x ${PWD}/.fluxbox/lumina_startup.sh
+	echo "手動でlumina_startup.shをスタートアップ実行に登録すること"
+
 .PHONY: all
 all: emacs vim fluxbox shell mikutter
 

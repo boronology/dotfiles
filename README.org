@@ -59,6 +59,20 @@
     $ cat package.txt | xargs yaourt -S
     #+END_SRC
 
+    なおリストの作り方は以下のとおり。
+
+    明示的にインストールしたパッケージ一覧
+
+    #+BEGIN_SRC text
+    $ pacman -Qqen > package.txt
+    #+END_SRC
+
+    AURから導入したパッケージ一覧
+
+    #+BEGIN_SRC text
+    $ pacman -Qmq > aurlist.txt
+    #+END_SRC
+
 *** フォント
     fonts.txt参照
 
